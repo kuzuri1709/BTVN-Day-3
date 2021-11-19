@@ -1,0 +1,70 @@
+body{
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#addBook{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:100%;
+    width:100%;
+    gap: 20px;
+}
+#container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    width: 90vw;
+    height: 90vh;
+}
+
+.info[name="Name"]{
+    height: 10%;
+    width: 100%;
+    border:2px solid red;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size:16px;
+}
+.info[name="Description"]{
+    height:40%;
+    width: 100%;
+    border:2px solid blue;
+    border-radius: 5px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    resize:vertical;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.info[name="btn"]{
+    height:10%;
+    width: fit-content;
+    background-color: rgb(65, 179, 65);
+    border: 0 solid;
+    border-radius: 10px;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table{
+    width: 90vw;
+}
+
+.edit,.delete{
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    border-radius: 5px;
+}
+.edit{
+    background-color: rgb(20, 247, 171);
+}
+.delete{
+    background-color: rgb(230, 29, 29);
+    color:white
+}
