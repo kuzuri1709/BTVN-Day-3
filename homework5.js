@@ -40,8 +40,10 @@ const showList = () => {
             deleteBtn = document.getElementsByClassName('delete');
             for (let i = 0; i < deleteBtn.length; i++) {
                 deleteBtn[i].addEventListener('click', () => {
-                    console.log('done'); deleteItem(i);
-
+                    console.log('done');
+                    deleteItem(i);
+                    showList();
+                    showList();
                 })
 
             }
@@ -92,9 +94,10 @@ const postBook = (name, description) => {
 }
 
 const deleteItem = (n) => {
-    fetchData.splice(n, 1);
-    // console.log(fetchData)
-    sendArray = { fetchData };
-    
-    showList();
+    fetch(`https://6190932df6bf450017484c2b.mockapi.io/api/Test/${fetchData[n].id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
 }
