@@ -15,18 +15,24 @@
         <form action="#" id="addBook">
             <input name="Name" type="text" class="info" placeholder="Book Name">
             <!-- <input name="Description" type="text" class="info" placeholder="Book Description"> -->
-            <span name="Description" role="textbox" class="info" placeholder="Book Description" contenteditable="true"></span>
+            <span name="Description" role="textbox" class="info" placeholder="Book Description"
+                contenteditable="true"></span>
             <input name="btn" type="submit" class="info">
         </form>
     </div>
 
-    <table id="bookList" >
+    <table id="bookList">
         <tr>
             <th width="30%">Name of book</th>
             <th>Description</th>
         </tr>
     </table>
 
+    <form id="editBox">
+        <span class="changing" placeholder="Name" contenteditable="true"></span>
+        <span class="changing" placeholder="Description" contenteditable="true"></span>
+        <input id="editSubmit" type="submit" background-color="black">
+    </form>
     <script src="./homework5.js"></script>
 </body>
 

@@ -8,6 +8,7 @@
 //     })
 // })
 var fetchData;
+var editSubmitBtn = document.getElementById('editSubmit');
 const showList = () => {
     let get = fetch('https://6190932df6bf450017484c2b.mockapi.io/api/Test')
         .then(res => {
@@ -42,10 +43,18 @@ const showList = () => {
                 deleteBtn[i].addEventListener('click', () => {
                     console.log('done');
                     deleteItem(i);
-                    showList();
-                    showList();
+                    setTimeout(() => {
+                        showList();
+                    }, 1000)
                 })
 
+            }
+            for (let i = 0; i < editBtn.length; i++) {
+                editBtn[i].addEventListener('click', () => {
+                    console.log('done edit');
+                    editItemChoose(i);
+                    
+                })
             }
         })
         .catch(error => console.log(error))
@@ -57,6 +66,9 @@ var table = document.getElementById('bookList');
 var editBtn = document.getElementsByClassName('edit');
 var deleteBtn = document.getElementsByClassName('delete');
 var sendArray = {};
+var editBox = document.getElementById('editBox');
+var editedContent = document.getElementsByClassName('changing');
+
 
 
 const form = document.getElementsByClassName('info')
@@ -71,8 +83,9 @@ submitBtn.addEventListener('click', (e) => {
         console.log(name);
         console.log(description);
         postBook(name, description);
-        showList();
-        showList();
+        setTimeout(() => {
+            showList();
+        }, 1000)
     } else {
         alert('Check your name and description!');
     }
@@ -100,4 +113,35 @@ const deleteItem = (n) => {
             'Content-Type': 'application/json'
         },
     })
+}
+
+const editItemChoose = (n) => {
+    editBox.style.visibility = 'visible';
+    console.log(editBtn);
+    editSubmitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        editItem(n);
+        // window.location.reload();
+    })
+}
+
+const editItem = (n) => {
+    if (editedContent[0].textContent != "" && editedContent[1].textContent != "") {
+        fetch(`https://6190932df6bf450017484c2b.mockapi.io/api/Test/${fetchData[n].id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: editedContent[0].textContent,
+                description: editedContent[1].textContent,
+            })
+        })
+        editBox.style.visibility = 'hidden';
+        setTimeout(() => {
+            showList();
+        }, 1000)
+    } else {
+        alert("No data!")
+    }
 }
